@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "http://localhost:8080/movies",
+                type: "GET",
+                success: function (data) {
+                    // Handle the response data
+                    // var html = "<table cellpadding='10'>";
+                    var html = "<table class='table'>";
+                    html += "<thead><tr><th>ID</th><th>Name</th><th>Description</th></tr></thead>";
+                    html += "<tbody>";
+                    for (var i = 0; i < data.length; i++) {
+                        var row = data[i];
+                        var id = row.id;
+                        var name = row.name;
+                        var description = row.description;
+                        html += "<tr>";
+                        html += "<td>" + id + "</td>";
+                        html += "<td>" + name + "</td>";
+                        html += "<td>" + description + "</td>";
+                        html += "</tr>";
+                    }
+                    html += "</tbody></table>";
+                    $("#dataContainer").html(html);
+                },
+                error: function (error) {
+                    console.log("Error fetching data: " + error);
+                }
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <h1>Movies</h1>
+    <hr>
+    <div id="dataContainer"></div>
+</body>
+
+</html>

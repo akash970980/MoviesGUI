@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                var movid = $("#movieid").val();
+
+               
+                $.ajax({
+                    type: "DELETE",
+                    url: "http://localhost:8080/movies/"+movid,
+                    
+                    contentType: "application/json",
+                    success: function (response) {
+                        alert(response);
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error)
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Delete Movie (Module)</h1>
+    <hr />
+    <table cellpadding="10">
+
+        <tr>
+            <td>Movie ID </td>
+            <td>
+                <input type="text" id="movieid" />
+            </td>
+        </tr>
+
+
+        <tr>
+
+            <td colspan="2" align="right">
+                <input type="button" id="btn" value="Delete Movie" />
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

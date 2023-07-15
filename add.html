@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                var movid = $("#movieid").val();
+                var movtitle = $("#movietitle").val();
+                var movdesc = $("#moviedesc").val();
+
+                var formData = {
+                    "id": movid,
+                    "name": movtitle,
+                    "description": movdesc
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8080/movies",
+                    data: JSON.stringify(formData),
+                    contentType: "application/json",
+                    success: function (response) {
+                        alert(response);
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error)
+                    }
+                });
+            });
+        });
+    </script>
+    
+</head>
+
+<body>
+    <h1>Add New Movie (Module)</h1>
+    <hr />
+
+
+
+    <table cellpadding="10">
+
+        <tr>
+            <td>Movie ID </td>
+            <td>
+                <input type="text" id="movieid" />
+            </td>
+        </tr>
+
+        <tr>
+            <td> Movie Title</td>
+            <td>
+                <input type="text" id="movietitle" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>Movie Description</td>
+            <td>
+                <input type="text" id="moviedesc" />
+            </td>
+        </tr>
+
+        <tr>
+
+            <td colspan="2" align="right">
+                <input type="button" id="btn" value="Add Movie" />
+            </td>
+        </tr>
+    </table>
+
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
