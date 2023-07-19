@@ -10,12 +10,12 @@
         $(document).ready(function () {
             $("#btn").click(function () {
                 var movid = $("#movieid").val();
-                var movtitle = $("#movietitle").val();
+                var movname = $("#moviename").val();
                 var movdesc = $("#moviedesc").val();
 
                 var formData = {
                     "id": movid,
-                    "name": movtitle,
+                    "title": movname,
                     "description": movdesc
                 };
                 $.ajax({
@@ -52,9 +52,9 @@
         </tr>
 
         <tr>
-            <td> Movie Title</td>
+            <td> Movie Name</td>
             <td>
-                <input type="text" id="movietitle" />
+                <input type="text" id="moviename" />
             </td>
         </tr>
 
